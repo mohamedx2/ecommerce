@@ -15,18 +15,18 @@ export default async function ProductsPage() {
   return (
     <div className="py-8 px-4">
       <h1 className="text-2xl font-bold mb-8">Our Products</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product: { _id: { toString: () => Key | null | undefined }; name: string; price: number; description: string; image: string }) => (
-          <ProductCard
-            key={product._id.toString()}
-            _id={String(product._id)}
-            name={product.name}
-            price={product.price}
-            description={product.description}
-            image={product.image}
-          />
-        ))}
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product: { _id: { toString: () => Key | null | undefined }; name: string; price: number; description: string; image: string }) => (
+            <ProductCard
+                key={product._id.toString()}
+                _id={String(product._id)}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+                image={product.image}
+            />
+            ))}
+        </div>
     </div>
   )
 }
