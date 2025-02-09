@@ -12,8 +12,8 @@ export const {
   adapter: MongoDBAdapter(clientPromise),
   providers: [
     Google({
-      clientId: process.env.GOOGLE_ID || "default-client-id",
-      clientSecret: process.env.GOOGLE_SECRET || "default-client-secret",
+      clientId: process.env.GOOGLE_ID!,
+      clientSecret: process.env.GOOGLE_SECRET!,
     }),
   ],
   callbacks: {
@@ -23,5 +23,16 @@ export const {
       }
       return session
     },
+    async signIn({ user, account, profile }) {
+      // Allow all Google sign-ins
+      if (account?.provider === "google") {
+        return true
+      }
+      return false
+    }
   },
+  pages: {
+    error: '/auth/error',
+    signIn: '/auth/signin',
+  }
 })
