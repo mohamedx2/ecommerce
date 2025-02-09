@@ -7,6 +7,7 @@ import { useCart } from '@/contexts/CartContext'
 import { useSession } from 'next-auth/react'
 import { toast } from 'sonner'
 import { useState } from 'react'
+import { motion } from "framer-motion"
 
 interface ProductCardProps {
   _id: string
@@ -39,29 +40,34 @@ export default function ProductCard({ _id, name, price, description, image }: Pr
   }
 
   return (
-    <div className="group relative">
-      <Card className="border-none" shadow="none">
-        <CardBody className="p-0">
-          <Link href={`/products/${name.toLowerCase().replace(/ /g, '-')}`}>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <Card 
+        shadow="sm" 
+        className="hover:shadow-lg transition-shadow"
+      >
+        <Link href={`/products/${name.toLowerCase().replace(/ /g, '-')}`}>
+          <CardBody className="overflow-visible p-0">
             <Image
               shadow="sm"
               radius="lg"
               width="100%"
               alt={name}
-              className="w-full object-cover h-[200px] transition-transform group-hover:scale-100 overflow-hidden"
+              className="w-full object-cover h-[200px]"
               src={image}
             />
+          </CardBody>
+        </Link>
+        <CardFooter className="flex flex-col items-start text-small">
+          <Link href={`/products/${name.toLowerCase().replace(/ /g, '-')}`}>
+            <div>
+              <b className="text-lg">{name}</b>
+              <p className="text-default-500 line-clamp-2">{description}</p>
+              <p className="text-primary font-bold text-lg mt-2">${price.toFixed(2)}</p>
+            </div>
           </Link>
-        </CardBody>
-        <CardFooter className="flex-col items-start px-4 pt-4 pb-6">
-          <Link 
-            href={`/products/${name.toLowerCase().replace(/ /g, '-')}`}
-            className="text-large font-bold hover:text-primary transition-colors"
-          >
-            {name}
-          </Link>
-          <p className="text-default-500">${price}</p>
-          <p className="text-small text-default-500">{description}</p>
           <Button
             className="mt-4 w-full"
             color="primary"
@@ -73,6 +79,6 @@ export default function ProductCard({ _id, name, price, description, image }: Pr
           </Button>
         </CardFooter>
       </Card>
-    </div>
+    </motion.div>
   );
 }
