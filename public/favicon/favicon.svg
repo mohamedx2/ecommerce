@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+  <!-- Background Circle -->
+  <circle cx="12" cy="12" r="12" fill="#0070F3"/>
+  
+  <!-- Shopping Bag -->
+  <path d="M6 8h12l-1 11H7L6 8Z" fill="white"/>
+  <path d="M8 8c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="white" stroke-width="1.5" fill="none"/>
+  
+  <!-- Handle -->
+  <path d="M15 11v2M9 11v2" stroke="#0070F3" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
