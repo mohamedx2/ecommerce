@@ -14,7 +14,7 @@ export default function CartPage() {
 
   useEffect(() => {
     refresh()
-  }, [refresh])
+  }, [refresh,items])
 
   if (status === "loading") {
     return (

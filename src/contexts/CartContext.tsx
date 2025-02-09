@@ -74,7 +74,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     fetchCart()
-  }, [status, session, fetchCart]) // remove fetchCart from dependency array
+  }, [status, session, fetchCart])
 
   const addItem = async (productId: string, quantity: number) => {
     if (!session?.user) {
@@ -127,10 +127,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       if (!res.ok) {
         throw new Error(data.error || 'Failed to remove item')
       }
-
-      // Update local state immediately
-      setItems(prev => prev.filter(item => item.product._id !== productId))
-      await refresh()
+      await fetchCart()
       toast.success('Item removed from cart')
     } catch (error) {
       console.error('Remove item error:', error)
