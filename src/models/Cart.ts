@@ -1,8 +1,8 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
-const CartItemSchema = new mongoose.Schema({
+const CartItemSchema = new Schema({
   product: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Product',
     required: true,
     index: true
@@ -17,7 +17,7 @@ const CartItemSchema = new mongoose.Schema({
   timestamps: true
 })
 
-const CartSchema = new mongoose.Schema({
+const CartSchema = new Schema({
   userId: {
     type: String,
     required: true,
@@ -26,7 +26,7 @@ const CartSchema = new mongoose.Schema({
   },
   items: [CartItemSchema],
 }, {
-  timestamps: true
+  timestamps: true // Add this to enable automatic createdAt and updatedAt
 })
 
 export const Cart = mongoose.models.Cart || mongoose.model('Cart', CartSchema)

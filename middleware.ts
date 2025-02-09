@@ -11,5 +11,6 @@ export const config = {
     "/profile/:path*",
     "/cart/:path*",
     "/orders/:path*",
+    "/admin/:path*"  // Also protect admin routes
   ],
 }
