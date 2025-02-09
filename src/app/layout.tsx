@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Your Store Name',
-    default: 'Your Store Name',
+    template: '%s | Hamroun Store',
+    default: 'Hamroun Store',
   },
   description: 'Modern ecommerce store built with Next.js',
   icons: {
